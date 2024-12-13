@@ -1,0 +1,63 @@
+-- CLIENTES sem pedidos
+SELECT 
+    c.ClienteID, 
+    c.Nome, 
+    c.Email 
+FROM 
+    Clientes c
+LEFT JOIN 
+    Pedidos p ON c.ClienteID = p.ClienteID
+WHERE 
+    p.PedidoID IS NULL;
+
+
+--Suponha que queremos listar os pedidos junto com os nomes dos clientes que os realizaram.
+SELECT
+    o.PedidoID,
+    c.Nome AS NomeCliente,
+    o.DataPedido,
+    o.Total
+FROM
+    Pedidos o
+INNER JOIN Clientes c ON o.ClienteID = c.ClienteID;
+
+--Listar todos os clientes e seus pedidos, se existirem.
+SELECT
+    c.ClienteID,
+    c.Nome AS NomeCliente,
+    o.PedidoID,
+    o.DataPedido
+FROM
+    Clientes c
+LEFT JOIN Pedidos o 
+ON c.ClienteID = o.ClienteID;
+
+--Listar todos os pedidos e seus clientes correspondentes, incluindo pedidos sem clientes cadastrados (hipotético).
+SELECT
+    o.PedidoID,
+    c.Nome AS NomeCliente,
+    o.DataPedido
+FROM
+    Pedidos o
+RIGHT JOIN Clientes c 
+ON o.ClienteID = c.ClienteID;
+
+--Listar todos os clientes e pedidos, mostrando NULL onde não há correspondência.
+SELECT
+    c.Nome AS NomeCliente,
+    o.PedidoID,
+    o.DataPedido
+FROM
+    Clientes c
+FULL JOIN Pedidos o 
+ON c.ClienteID = o.ClienteID;
+ScriptApresentacaoJoins.sql
+Exibindo ScriptApresentacaoJoins.sql…
+Script com os códigos da apresentação
+ARTHUR ANTUNES FERREIRA
+•
+Ontem
+
+ScriptApresentacaoJoins.sql
+SQL
+Comentários da turma
